@@ -1,0 +1,39 @@
+{
+  "name": "diploma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "t": "npx playwright test",
+    "report": "npx playwright show-report",
+    "t:api": "npx playwright test --project=API",
+    "code": "npx playwright codegen",
+    "t1": "npx playwright test tests/ui",
+    "t2": "npx playwright test tests/api",
+    "t:headed": "playwright test --headed",
+    "t:debug": "npx playwright test --debug",
+    "t:ui": "npx playwright test --ui",
+    "t:chrome": "npx playwright test --project=chromium",
+    "allureO": "npx allure open",
+    "allureG": "npx allure generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@faker-js/faker": "^10.5.0",
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.1",
+    "allure-playwright": "^3.10.2",
+    "eslint": "^10.6.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "globals": "^17.7.0",
+    "prettier": "^3.9.5"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  }
+}
