@@ -6,6 +6,7 @@ export class YourfeedPage {
     this.article = page.getByRole('link', { name: 'New Article' });
     this.popularTag = page.locator('aside .tag-list .tag-pill').first();
     this.articleTag = page.locator('.article-preview .tag-list .tag-pill').first();
+    this.yourFeedButton = page.getByRole('button', { name: 'Your feed' });
   }
 
   getProfileName() {
@@ -22,5 +23,8 @@ export class YourfeedPage {
   getArticleTag() {
     // Используем уже определённый articleTag!
     return this.articleTag;
+  }
+  getYourFeed() {
+    return this.yourFeedButton;
   }
 }

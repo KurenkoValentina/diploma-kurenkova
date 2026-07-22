@@ -55,8 +55,10 @@ test.describe('API Tests', () => {
     await api.todos.post(token, doneTodo);
 
     const { body } = await api.todos.getDoneTodos(token);
-    const doneStatus = body.todos[0].doneStatus;
-    expect(doneStatus).toBe(true);
+    // const doneStatus = body.todos[0].doneStatus;
+    // expect(doneStatus).toBe(true);
+    expect(body.todos.every((t) => t.doneStatus === true)).toBe(true);
+    expect(body.todos.map((t) => t.title)).toContain(doneTodo.title);
   });
 
   // тест 6 обновить заголовок задачи по id POST /todos/{id} (200)

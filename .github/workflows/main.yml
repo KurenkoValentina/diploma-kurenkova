@@ -24,7 +24,7 @@ jobs:
       - name: Установить браузеры
         run: npx playwright install --with-deps
       - name: Запусти тесты
-        run: npm t
+        run: npm run test
         env:
           UI_URL: ${{ vars.UI_URL }}
           API_URL: ${{ vars.API_URL }}
@@ -85,5 +85,5 @@ jobs:
         if: always()
 
       - name: Отправить уведомление в Telegram
-        run: java "-DconfigFile=notifications/config.json" -jar notifications/allure-notifications-5.0.2.jar
+        run: java "-DconfigFile=notifications/config.json" -jar notifications/allure-notifications.jar
         if: always()

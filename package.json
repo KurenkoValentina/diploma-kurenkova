@@ -13,7 +13,6 @@
     "t:headed": "playwright test --headed",
     "t:debug": "npx playwright test --debug",
     "t:ui": "npx playwright test --ui",
-    "t:chrome": "npx playwright test --project=chromium",
     "allureO": "npx allure open",
     "allureG": "npx allure generate"
   },
