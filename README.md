@@ -156,7 +156,7 @@ API_URL=https://realworld.qa.guru/api
 
 ### Allure (GitHub Actions / локально)
 
-![Уведомление в Telegram](media/telegram-notification.png)
+![Уведомление в allure](media/allure1.png)
 
 ### Результаты тестов автоматически передаются в Allure TestOps
 
