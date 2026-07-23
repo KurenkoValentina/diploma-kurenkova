@@ -29,7 +29,7 @@ jobs:
           UI_URL: ${{ vars.UI_URL }}
           API_URL: ${{ vars.API_URL }}
       - name: Генерируем отчет
-        run: npx allure generate allure-results --output allure-report --clean
+        run: npx allure-commandline generate allure-results -o allure-report --clean
         continue-on-error: true
         if: always()
       - name: Upload a Build Artifact
