@@ -28,8 +28,12 @@ jobs:
         env:
           UI_URL: ${{ vars.UI_URL }}
           API_URL: ${{ vars.API_URL }}
-      - name: Генерируем отчет
+      - name: Генерируем отчет для телеграмм 
         run: npx allure-commandline generate allure-results -o allure-report --clean
+        continue-on-error: true
+        if: always()
+      - name: Генерируем single-file отчет Allure 
+        run: npx allure-commandline generate allure-results -o allure-report-single --clean --single-file
         continue-on-error: true
         if: always()
       - name: Upload a Build Artifact
@@ -42,6 +46,7 @@ jobs:
             allure-report
             allure-results
             playwright-report
+            allure-report-single
 
       - name: Setup Java (требуется для запуска .jar)
         uses: actions/setup-java@v4
