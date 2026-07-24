@@ -1,7 +1,8 @@
 import { faker } from '@faker-js/faker';
 export class UserBuilder {
   withEmail() {
-    this.email = faker.internet.email({ lastName: 'BIN', provider: 'robot.dev' });
+    const uniqueId = Date.now().toString().slice(-6);
+    this.email = faker.internet.email({ lastName: `BIN${uniqueId}` });
     return this;
   }
   withPassword(length = 10) {
