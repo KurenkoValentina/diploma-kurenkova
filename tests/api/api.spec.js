@@ -89,7 +89,7 @@ test.describe('API Tests', () => {
     expect(body.description).toEqual(newToDo.description);
   });
 
-  // тест 8 удаление задачи DELETE /todos/{id} (200)
+  // тест 8 удаление задачи DELETE /todos/{id} (204)
   test('DELETE /todos/{id} - удаление задачи по id @DELETE', async ({ api }) => {
     const todo = new TodoBuilder().addTitle(2).addDoneStatus(false).build();
     const { body: created } = await api.todos.post(token, todo);
@@ -101,7 +101,7 @@ test.describe('API Tests', () => {
 
     // удаляем
     const { status } = await api.todos.delete(token, localTodoId);
-    expect(status).toBe(200);
+    expect(status).toBe(204);
 
     // проверяем после удаления
     const { body: afterDeleted } = await api.todos.getAllTodos(token);
