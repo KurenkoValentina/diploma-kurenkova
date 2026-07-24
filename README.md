@@ -148,17 +148,31 @@ API_URL=https://realworld.qa.guru/api
 
 ### Jenkins
 
+Проект настроен для запуска в Jenkins CI/CD.
+Для доступа в [Jenkins](https://jenkins.qa.guru/) необходимо пройти регистрацию на платформе Jenkins.
+Для запуска сборки нужно кнопку Build now.
+[Ссылка на сборку](https://jenkins.qa.guru/job/008-kuren-JSPW/)
+
+![Jenkins ](media/jenkins.png)
+
 ## 📊 Отчетность
 
 Для построения отчетов о пройденных тестах в данном проекте использовался Allure.
 
 ### Allure (Jenkins)
 
+![Уведомление в allure1](media/allurej.png)
+![Уведомление в allure2](media/allurej1.png)
+
 ### Allure (GitHub Actions / локально)
 
 ![Уведомление в allure](media/allure1.png)
 
-### Результаты тестов автоматически передаются в Allure TestOps
+### Allure TestOps
+
+Результаты тестов автоматически передаются в [Allure TestOps](https://allure.autotests.cloud/).
+[Ссылка на проект](https://allure.qa.guru/project/5294/launches)
+![Уведомление в testops](media/testops1.png)
 
 ## 🔔 Уведомления
 
