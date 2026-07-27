@@ -176,7 +176,11 @@ test.describe('UI Tests', () => {
     });
     // Проверяем, что тег есть в статьях
     await test.step('Проверка наличия тэга в отфильтрованном списке статей', async () => {
-      await expect(webApp.yourfeed.getArticleTag()).toContainText(tagName);
+      const tagLists = webApp.yourfeed.getArticleTagList();
+      const count = await tagLists.count();
+      for (let i = 0; i < count; i++) {
+        await expect(tagLists.nth(i)).toContainText(tagName);
+      }
     });
   });
 });

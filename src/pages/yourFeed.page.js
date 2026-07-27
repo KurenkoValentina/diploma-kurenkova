@@ -5,7 +5,7 @@ export class YourfeedPage {
     this.profileName = page.getByRole('navigation');
     this.article = page.getByRole('link', { name: 'New Article' });
     this.popularTag = page.locator('aside .tag-list .tag-pill').first();
-    this.articleTag = page.locator('.article-preview .tag-list .tag-pill').first();
+    this.articleTags = page.locator('.article-preview .tag-list '); // блог тэгов для каждой статьи
     this.yourFeedButton = page.getByRole('button', { name: 'Your feed' });
   }
 
@@ -20,9 +20,9 @@ export class YourfeedPage {
     await this.popularTag.click();
     return tagName;
   }
-  getArticleTag() {
-    // Используем уже определённый articleTag!
-    return this.articleTag;
+  getArticleTagList() {
+    // возвращаем все тэги в статьях
+    return this.articleTags;
   }
   getYourFeed() {
     return this.yourFeedButton;
