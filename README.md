@@ -71,8 +71,7 @@ diploma-kurenkova/
 │   └── ui/
 │       └── ui.spec.js                # UI-тесты (E2E сценарии, формы, навигация)
 ├── .gitignore                        # Игнорируемые файлы Git
-├── Dockerfile                        # Образ Docker для запуска тестов в изолированном окружении
-├── Jenkinsfile                       # Declarative Pipeline для Jenkins
+├── Dockerfile                        # Образ Docker для запуска тестов в изолированном окружении                     
 ├── package.json                      # Зависимости и npm-скрипты
 ├── playwright.config.js              # Конфигурация Playwright (проекты, ретраи, репортеры)
 └── README.md                         # Документация проекта
