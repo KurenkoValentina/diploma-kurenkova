@@ -115,7 +115,7 @@ cp .env.example .env
 
 ```env
 UI_URL=https://realworld.qa.guru
-API_URL=https://realworld.qa.guru/api
+API_URL=https://apichallenges.eviltester.com
 ```
 
 ### 4️. Запуск тестов
