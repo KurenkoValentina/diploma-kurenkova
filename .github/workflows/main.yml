@@ -28,6 +28,15 @@ jobs:
         env:
           UI_URL: ${{ vars.UI_URL }}
           API_URL: ${{ vars.API_URL }}
+      - name: Upload results to Allure TestOps
+        uses: allure-framework/allure-testops-action@v1
+        if: always()
+        with:
+          endpoint: https://allure.qa.guru
+          project: 5294 
+          token: ${{ secrets.ALLURE_TOKEN }}
+          results: allure-results
+          environment: GitHub Actions
       - name: Генерируем отчет для телеграмм 
         run: npx allure-commandline generate allure-results -o allure-report --clean
         continue-on-error: true
