@@ -117,6 +117,14 @@ cp .env.example .env
 UI_URL=https://realworld.qa.guru
 API_URL=https://apichallenges.eviltester.com
 ```
+Для связи с Allure TestOps через Git Hub actions нужно знать значения из env:
+ALLURE_TOKEN 
+ALLURE_PROJECT_ID
+
+Для настройки уведомлений в телеграмм через Git Hub actions нужно знать значения из env:
+TELEGRAM_CHAT_ID
+TELEGRAM_BOT_TOKEN
+
 
 ### 4️. Запуск тестов
 
@@ -149,7 +157,7 @@ API_URL=https://apichallenges.eviltester.com
 
 Проект настроен для запуска в Jenkins CI/CD.
 Для доступа в [Jenkins](https://jenkins.qa.guru/) необходимо пройти регистрацию на платформе Jenkins.
-Для запуска сборки нужно кнопку Build now.
+Для запуска сборки нужно нажать кнопку Build now.
 [Ссылка на сборку](https://jenkins.qa.guru/job/008-kuren-JSPW/)
 
 ![Jenkins ](media/jenkins.png)
@@ -169,7 +177,7 @@ API_URL=https://apichallenges.eviltester.com
 
 ### Allure TestOps
 
-Результаты тестов автоматически передаются в [Allure TestOps](https://allure.autotests.cloud/).
+Результаты тестов автоматически передаются в Allure TestOps как через GitHub Actions (при push в репозиторий), так и через Jenkins (по завершении сборки) в [Allure TestOps](https://allure.autotests.cloud/).
 [Ссылка на проект](https://allure.qa.guru/project/5294/launches)
 ![Уведомление в testops](media/testops1.png)
 
