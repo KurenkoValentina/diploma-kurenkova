@@ -23,24 +23,25 @@ jobs:
         run: npm ci
       - name: Установить браузеры
         run: npx playwright install --with-deps
+      - name: Setup AllureCTL
+        uses: allure-framework/setup-allurectl@v1
+        with:
+          allure-endpoint: https://allure.qa.guru
+          allure-token: ${{ secrets.ALLURE_TOKEN }}
+          allure-project-id: ${{ vars.ALLURE_PROJECT_ID }}  
       - name: Запусти тесты
         run: npm run test
         env:
           UI_URL: ${{ vars.UI_URL }}
           API_URL: ${{ vars.API_URL }}
       - name: Upload results to Allure TestOps
-        uses: allure-framework/allure-testops-action@v1
         if: always()
-        with:
-          endpoint: https://allure.qa.guru
-          project: 5294 
-          token: ${{ secrets.ALLURE_TOKEN }}
-          results: allure-results
-          environment: GitHub Actions
+        run: allurectl upload allure-results
       - name: Генерируем отчет для телеграмм 
         run: npx allure-commandline generate allure-results -o allure-report --clean
         continue-on-error: true
         if: always()
+        # Нужно для открытия кликом отчета allure из артефактов
       - name: Генерируем single-file отчет Allure 
         run: npx allure-commandline generate allure-results -o allure-report-single --clean --single-file
         continue-on-error: true
