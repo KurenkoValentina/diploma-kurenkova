@@ -71,7 +71,7 @@ diploma-kurenkova/
 │   └── ui/
 │       └── ui.spec.js                # UI-тесты (E2E сценарии, формы, навигация)
 ├── .gitignore                        # Игнорируемые файлы Git
-├── Dockerfile                        # Образ Docker для запуска тестов в изолированном окружении                     
+├── Dockerfile                        # Образ Docker для запуска тестов в изолированном окружении
 ├── package.json                      # Зависимости и npm-скрипты
 ├── playwright.config.js              # Конфигурация Playwright (проекты, ретраи, репортеры)
 └── README.md                         # Документация проекта
@@ -117,14 +117,14 @@ cp .env.example .env
 UI_URL=https://realworld.qa.guru
 API_URL=https://apichallenges.eviltester.com
 ```
+
 Для связи с Allure TestOps через Git Hub actions нужно знать значения из env:
-ALLURE_TOKEN 
+ALLURE_TOKEN
 ALLURE_PROJECT_ID
 
 Для настройки уведомлений в телеграмм через Git Hub actions нужно знать значения из env:
 TELEGRAM_CHAT_ID
 TELEGRAM_BOT_TOKEN
-
 
 ### 4️. Запуск тестов
 
@@ -178,6 +178,7 @@ TELEGRAM_BOT_TOKEN
 ### Allure TestOps
 
 Результаты тестов автоматически передаются в Allure TestOps как через GitHub Actions (при push в репозиторий), так и через Jenkins (по завершении сборки) в [Allure TestOps](https://allure.autotests.cloud/).
+![Уведомление в testops1](media/testops2.png)
 [Ссылка на проект](https://allure.qa.guru/project/5294/launches)
 ![Уведомление в testops](media/testops1.png)
 
