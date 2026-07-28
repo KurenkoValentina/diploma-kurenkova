@@ -12,7 +12,7 @@ test.describe('API Tests', () => {
     expect(token).toBeDefined();
   });
   // Тест 1: Проверка токена на тип данных, на непустоту
-  test('POST /challenger - проверка токена на валидность @POST', async ({ api }) => {
+  test('POST /challenger - проверка токена на валидность @POST', async () => {
     expect(typeof token).toBe('string');
     expect(token.length).toBeGreaterThan(0);
     expect(token.trim()).not.toBe('');

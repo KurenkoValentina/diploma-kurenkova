@@ -4,6 +4,18 @@ import prettier from 'eslint-plugin-prettier';
 import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default [
+  {
+    ignores: [
+      'node_modules/**',
+      'allure-report/**',
+      'allure-results/**',
+      'playwright-report/**',
+      'test-results/**',
+      'dist/**',
+      'build/**',
+      '*.min.js',
+    ],
+  },
   // 1. Базовая конфигурация ESLint
   js.configs.recommended,
 

@@ -1,11 +1,10 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
-import path from 'path';
 
 // Загружаем .env  локально
 if (!process.env.CI) {
-  dotenv.config({ path: path.resolve(__dirname, '.env') });
+  dotenv.config();
 }
 
 export default defineConfig({
