@@ -1,6 +1,6 @@
 import { test } from '../../src/helpers/fixtures/fixture';
 import { expect } from '@playwright/test';
-import { TodoBuilder } from '../../src/helpers/builders/todo.builder';
+import { TodoBuilder } from '../../src/helpers/builders';
 
 test.describe('API Tests', () => {
   let token;
