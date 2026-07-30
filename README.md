@@ -56,9 +56,9 @@ API тесты — 8 функциональных автотестов для с
 diploma-kurenkova/
 ├── .github/
 │   └── workflows/
-│       └── main.yml                  # Конфигурация CI/CD (GitHub Actions)
-├── notifications/
-│   └── config.json                   # Настройки уведомлений Allure (Telegram)
+│       └── main.yml                  # Конфигурация CI/CD (включая динамическую генерацию config.json для Telegram-уведомлений)
+├── notifications
+│                  
 ├── src/
 │   ├── helpers/
 │   │   ├── builders/                 # Builder Pattern (UserBuilder, ArticleBuilder и т.д.)
@@ -67,9 +67,9 @@ diploma-kurenkova/
 │   └── services/                     # API-клиенты и обертки для запросов
 ├── tests/
 │   ├── api/
-│   │   └── api.spec.js               # API-тесты (CRUD, аутентификация, валидация)
+│   │   └── api.spec.js               # API-тесты 
 │   └── ui/
-│       └── ui.spec.js                # UI-тесты (E2E сценарии, формы, навигация)
+│       └── ui.spec.js                # UI-тесты 
 ├── .gitignore                        # Игнорируемые файлы Git
 ├── Dockerfile                        # Образ Docker для запуска тестов в изолированном окружении
 ├── package.json                      # Зависимости и npm-скрипты
@@ -85,8 +85,8 @@ diploma-kurenkova/
 
 Перед запуском убедись, что у тебя установлены:
 
-- **Node.js** >= 18.x ([скачать](https://nodejs.org/))
-- **npm** >= 9.x (идет в комплекте с Node.js)
+- **Node.js** >= 20.x ([скачать](https://nodejs.org/))
+- **npm** >= 10.x (идет в комплекте с Node.js)
 - **Git** ([скачать](https://git-scm.com/))
 
 ### 2. Установка
@@ -97,10 +97,10 @@ git clone https://github.com/KurenkoValentina/diploma-kurenkova.git
 cd diploma-kurenkova
 
 # Установка зависимостей
-npm ci
+npm install
 
 # Установка браузеров Playwright
-npx playwright install
+npx playwright install --with-deps
 ```
 
 ### 3️. Настройка переменных окружения
@@ -119,7 +119,7 @@ API_URL=https://apichallenges.eviltester.com
 ```
 
 Для связи с Allure TestOps через Git Hub actions нужно знать значения из env:
-ALLURE_TOKEN
+ALLURE_TOKEN  
 ALLURE_PROJECT_ID
 
 Для настройки уведомлений в телеграмм через Git Hub actions нужно знать значения из env:
@@ -149,8 +149,8 @@ TELEGRAM_BOT_TOKEN
 ## 🔄 Запуск в CI/CD
 
 ### GitHub Actions
-
-Тесты автоматически запускаются при push в ветку main
+Тесты автоматически запускаются при push в ветку main.
+[Ссылка на  GitHub Actions](https://github.com/KurenkoValentina/diploma-kurenkova/actions/)
 ![Успешный билд в GitHub Actions](media/GH.png)
 
 ### Jenkins
@@ -158,6 +158,7 @@ TELEGRAM_BOT_TOKEN
 Проект настроен для запуска в Jenkins CI/CD.
 Для доступа в [Jenkins](https://jenkins.qa.guru/) необходимо пройти регистрацию на платформе Jenkins.
 Для запуска сборки нужно нажать кнопку Build now.
+
 [Ссылка на сборку](https://jenkins.qa.guru/job/008-kuren-JSPW/)
 
 ![Jenkins ](media/jenkins.png)
@@ -167,6 +168,7 @@ TELEGRAM_BOT_TOKEN
 Для построения отчетов о пройденных тестах в данном проекте использовался Allure.
 
 ### Allure (Jenkins)
+Отчет: https://jenkins.qa.guru/job/008-kuren-JSPW/allure-report/
 
 ![Уведомление в allure1](media/allurej.png)
 ![Уведомление в allure2](media/allurej1.png)
