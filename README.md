@@ -118,12 +118,12 @@ UI_URL=https://realworld.qa.guru
 API_URL=https://apichallenges.eviltester.com
 ```
 
-Для связи с Allure TestOps через Git Hub actions нужно знать значения из env:
+Для связи с Allure TestOps через Git Hub actions нужно знать значения из env:  
 ALLURE_TOKEN  
 ALLURE_PROJECT_ID
 
-Для настройки уведомлений в телеграмм через Git Hub actions нужно знать значения из env:
-TELEGRAM_CHAT_ID
+Для настройки уведомлений в телеграмм через Git Hub actions нужно знать значения из env:  
+TELEGRAM_CHAT_ID  
 TELEGRAM_BOT_TOKEN
 
 ### 4️. Запуск тестов
