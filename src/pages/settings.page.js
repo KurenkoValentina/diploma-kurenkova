@@ -1,3 +1,4 @@
+import { test } from '@playwright/test';
 export class SettingsPage {
   constructor(page) {
     this.page = page;
@@ -9,20 +10,30 @@ export class SettingsPage {
   }
 
   // Бизнес-сценарии на страничке
+  // Изменение имени пользователя
   async updateName(username) {
-    await this.nameInput.click();
-    await this.nameInput.fill(username);
+    return test.step('Изменение пароля пользователя', async () => {
+      await this.nameInput.click();
+      await this.nameInput.fill(username);
+      await this.settingsButton.click();
+    });
   }
+  //  Изменение пароля пользователя
   async updatePassword(password) {
-    await this.passwordInput.click();
-    await this.passwordInput.fill(password);
+    return test.step('Изменение пароля пользователя', async () => {
+      await this.passwordInput.click();
+      await this.passwordInput.fill(password);
+      await this.settingsButton.click();
+    });
   }
-  async updateEmail(email) {
-    await this.emailInput.click();
-    await this.emailInput.fill(email);
-  }
-
-  async saveChanges() {
-    await this.settingsButton.click();
+  // Изменение email с подтверждением текущего пароля
+  async updateEmail(email, password) {
+    return test.step('Изменение email пользователя', async () => {
+      await this.emailInput.click();
+      await this.emailInput.fill(email);
+      await this.passwordInput.click();
+      await this.passwordInput.fill(password);
+      await this.settingsButton.click();
+    });
   }
 }

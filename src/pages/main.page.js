@@ -1,3 +1,4 @@
+import { test } from '@playwright/test';
 export class MainPage {
   constructor(page) {
     // это браузер
@@ -13,37 +14,47 @@ export class MainPage {
 
   // Бизнес-сценарии на страничке
   async gotoRegister() {
-    await this.signupButton.click();
+    return test.step('Переход на страницу регистрации', async () => {
+      await this.signupButton.click();
+    });
   }
   async gotoSettings() {
-    await this.dropdownMenu.click();
-    await this.settingsButton.click();
+    return test.step('Переход в настройки профиля', async () => {
+      await this.dropdownMenu.click();
+      await this.settingsButton.click();
+    });
   }
 
   async gotologin() {
-    // await this.loginButton.click();
-    // кнопка в меню нестабильна  - приходится так
-    await this.page.goto('/#/login');
-    await this.page.waitForLoadState('domcontentloaded');
+    return test.step('Переход на страницу авторизации', async () => {
+      // await this.loginButton.click();
+      // кнопка в меню нестабильна  - приходится так
+      await this.page.goto('/#/login');
+      await this.page.waitForLoadState('domcontentloaded');
+    });
   }
 
   async gotologout() {
-    await this.dropdownMenu.click();
-    await this.dropdownLogout.waitFor({ state: 'visible' }); // ждем видимость
-    await this.dropdownLogout.click();
-    // для обхода detached from DOM - принудительно чистим - ui работает нестабильно ( не очищает сессию)
-    // await this.page.waitForURL('**/#/');
-    await this.page.context().clearCookies();
-    await this.page.evaluate(() => {
-      localStorage.clear();
-      sessionStorage.clear();
+    return test.step('Выход из системы и очистка сессии', async () => {
+      await this.dropdownMenu.click();
+      await this.dropdownLogout.waitFor({ state: 'visible' }); // ждем видимость
+      await this.dropdownLogout.click();
+      // для обхода detached from DOM принудительная очистка сессии - ui работает нестабильно
+      // await this.page.waitForURL('**/#/');
+      await this.page.context().clearCookies();
+      await this.page.evaluate(() => {
+        localStorage.clear();
+        sessionStorage.clear();
+      });
+      // Принудительная перезагрузка для перерисовки шапки
+      await this.page.goto('/');
+      await this.page.waitForLoadState('networkidle');
     });
-    // Принудительно обновляем страницу, чтобы фронтенд перерисовал шапку - нестабильно работает сайт
-    await this.page.goto('/');
-    await this.page.waitForLoadState('networkidle');
   }
 
   async goto() {
-    await this.page.goto('/');
+    return test.step('Переход на главную страницу', async () => {
+      await this.page.goto('/');
+    });
   }
 }

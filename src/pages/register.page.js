@@ -1,3 +1,4 @@
+import { test } from '@playwright/test';
 export class RegisterPage {
   constructor(page) {
     this.page = page;
@@ -11,12 +12,14 @@ export class RegisterPage {
 
   // Бизнес-сценарии на страничке
   async signup(username, email, password) {
-    await this.yournameInput.click();
-    await this.yournameInput.fill(username);
-    await this.emailInput.click();
-    await this.emailInput.fill(email);
-    await this.passwordInput.click();
-    await this.passwordInput.fill(password);
-    await this.signupButton.click();
+    return test.step('Регистрация пользователя', async () => {
+      await this.yournameInput.click();
+      await this.yournameInput.fill(username);
+      await this.emailInput.click();
+      await this.emailInput.fill(email);
+      await this.passwordInput.click();
+      await this.passwordInput.fill(password);
+      await this.signupButton.click();
+    });
   }
 }

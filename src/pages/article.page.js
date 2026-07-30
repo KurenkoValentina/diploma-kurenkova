@@ -1,3 +1,4 @@
+import { test } from '@playwright/test';
 export class ArticlePage {
   constructor(page) {
     this.page = page;
@@ -18,19 +19,24 @@ export class ArticlePage {
     return this.articleText;
   }
   async updateArticle() {
-    await this.EditButton.click();
+    return test.step('Переход к редактированию статьи', async () => {
+      await this.EditButton.click();
+    });
   }
   async postComment(commentText) {
-    await this.comment.click();
-    await this.comment.fill(commentText);
-    await this.postCommentButton.click();
+    return test.step('Публикация комментария', async () => {
+      await this.comment.click();
+      await this.comment.fill(commentText);
+      await this.postCommentButton.click();
+    });
   }
   getyourComment() {
     return this.yourComment;
   }
   async deleteArticle() {
-    this.page.once('dialog', (dialog) => dialog.accept());
-
-    await this.deleteArticleButton.click();
+    return test.step('Удаление статьи', async () => {
+      this.page.once('dialog', (dialog) => dialog.accept());
+      await this.deleteArticleButton.click();
+    });
   }
 }

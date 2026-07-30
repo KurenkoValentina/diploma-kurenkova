@@ -95,16 +95,12 @@ test.describe('API Tests', () => {
     const { body: created } = await api.todos.post(token, todo);
     const localTodoId = created.id;
 
-    // проверка до удаления
-    const { body: beforeDeleted } = await api.todos.getAllTodos(token);
-    const beforeCount = beforeDeleted.todos.length;
-
     // удаляем
     const { status } = await api.todos.delete(token, localTodoId);
     expect(status).toBe(204);
 
-    // проверяем после удаления
-    const { body: afterDeleted } = await api.todos.getAllTodos(token);
-    expect(afterDeleted.todos.length).toBe(beforeCount - 1);
+    //  Пытаемся получить удаленную задачу напрямую -  сервер вернет 404 (Not Found)
+    const { status: getStatus } = await api.todos.getTodoById(token, localTodoId);
+    expect(getStatus).toBe(404);
   });
 });

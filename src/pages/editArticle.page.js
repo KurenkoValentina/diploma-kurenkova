@@ -1,3 +1,4 @@
+import { test } from '@playwright/test';
 export class EditArticle {
   constructor(page) {
     this.page = page;
@@ -9,12 +10,14 @@ export class EditArticle {
 
   // изменение текста статьи
   async updateArticle(title, description, text) {
-    await this.title.click();
-    await this.title.fill(title);
-    await this.description.click();
-    await this.description.fill(description);
-    await this.text.click();
-    await this.text.fill(text);
-    await this.updateArticleButton.click();
+    return test.step('Изменение статьи', async () => {
+      await this.title.click();
+      await this.title.fill(title);
+      await this.description.click();
+      await this.description.fill(description);
+      await this.text.click();
+      await this.text.fill(text);
+      await this.updateArticleButton.click();
+    });
   }
 }

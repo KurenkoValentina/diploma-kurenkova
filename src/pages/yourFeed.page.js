@@ -1,3 +1,4 @@
+import { test } from '@playwright/test';
 export class YourfeedPage {
   constructor(page) {
     this.page = page;
@@ -13,12 +14,16 @@ export class YourfeedPage {
     return this.profileName;
   }
   async createArticle() {
-    await this.article.click();
+    return test.step('Переход к созданию новой статьи', async () => {
+      await this.article.click();
+    });
   }
   async getArticlesWithTags() {
-    const tagName = await this.popularTag.textContent();
-    await this.popularTag.click();
-    return tagName;
+    return test.step('Получение популярного тэга и переход по нему', async () => {
+      const tagName = await this.popularTag.textContent();
+      await this.popularTag.click();
+      return tagName;
+    });
   }
   getArticleTagList() {
     // возвращаем все тэги в статьях

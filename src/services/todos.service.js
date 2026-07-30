@@ -49,7 +49,8 @@ export class TodosService {
 
       const headers = await response.headers();
       const body = await response.json();
-      return { body, headers };
+      const status = await response.status();
+      return { body, headers, status };
     });
   }
   // Получить все сделанные задачи
