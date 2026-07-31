@@ -22,7 +22,7 @@
 
 Дипломный проект, выполненный в рамках курса по автоматизации тестирования на JavaScript + Playwright. Проект включает UI и API тесты с интеграцией в CI/CD pipeline.
 
-UI тесты — 8 функциональных автотестов для приложения [realworld.qa.guru](https://realworld.qa.guru/).
+UI тесты — 10 функциональных автотестов (8 позитивных и 2 негативных) для приложения [realworld.qa.guru](https://realworld.qa.guru/).
 API тесты — 8 функциональных автотестов для сервиса [apichallenges.eviltester.com](https://apichallenges.eviltester.com/gui/challenges).
 Применённые паттерны:
 
@@ -58,7 +58,7 @@ diploma-kurenkova/
 │   └── workflows/
 │       └── main.yml                  # Конфигурация CI/CD (включая динамическую генерацию config.json для Telegram-уведомлений)
 ├── notifications
-│                  
+│
 ├── src/
 │   ├── helpers/
 │   │   ├── builders/                 # Builder Pattern (UserBuilder, ArticleBuilder и т.д.)
@@ -67,9 +67,9 @@ diploma-kurenkova/
 │   └── services/                     # API-клиенты и обертки для запросов
 ├── tests/
 │   ├── api/
-│   │   └── api.spec.js               # API-тесты 
+│   │   └── api.spec.js               # API-тесты
 │   └── ui/
-│       └── ui.spec.js                # UI-тесты 
+│       └── ui.spec.js                # UI-тесты
 ├── .gitignore                        # Игнорируемые файлы Git
 ├── Dockerfile                        # Образ Docker для запуска тестов в изолированном окружении
 ├── package.json                      # Зависимости и npm-скрипты
@@ -149,8 +149,9 @@ TELEGRAM_BOT_TOKEN
 ## 🔄 Запуск в CI/CD
 
 ### GitHub Actions
+
 Тесты автоматически запускаются при push в ветку main.
-[Ссылка на  GitHub Actions](https://github.com/KurenkoValentina/diploma-kurenkova/actions/)
+[Ссылка на GitHub Actions](https://github.com/KurenkoValentina/diploma-kurenkova/actions/)
 ![Успешный билд в GitHub Actions](media/GH.png)
 
 ### Jenkins
@@ -168,6 +169,7 @@ TELEGRAM_BOT_TOKEN
 Для построения отчетов о пройденных тестах в данном проекте использовался Allure.
 
 ### Allure (Jenkins)
+
 Отчет: https://jenkins.qa.guru/job/008-kuren-JSPW/allure-report/
 
 ![Уведомление в allure1](media/allurej.png)

@@ -12,6 +12,7 @@ export class MainPage {
     this.dropdownLogout = page.locator('a.dropdown-item').filter({ hasText: 'Logout' });
     this.popularTag = page.locator('aside .tag-list .tag-pill').first();
     this.articleTags = page.locator('.article-preview .tag-list '); // блог тэгов для каждой статьи
+    this.errorMessages = page.locator('main .error-messages');
   }
 
   // Бизнес-сценарии на страничке
@@ -68,5 +69,8 @@ export class MainPage {
   getArticleTagList() {
     // возвращаем все тэги в статьях
     return this.articleTags;
+  }
+  getError() {
+    return this.errorMessages;
   }
 }
