@@ -10,6 +10,8 @@ export class MainPage {
     this.dropdownProfile = page.locator('a.dropdown-item').filter({ hasText: 'Profile' });
     this.settingsButton = page.locator('a.dropdown-item').filter({ hasText: 'Settings' });
     this.dropdownLogout = page.locator('a.dropdown-item').filter({ hasText: 'Logout' });
+    this.popularTag = page.locator('aside .tag-list .tag-pill').first();
+    this.articleTags = page.locator('.article-preview .tag-list '); // блог тэгов для каждой статьи
   }
 
   // Бизнес-сценарии на страничке
@@ -37,18 +39,17 @@ export class MainPage {
   async gotologout() {
     return test.step('Выход из системы и очистка сессии', async () => {
       await this.dropdownMenu.click();
-      await this.dropdownLogout.waitFor({ state: 'visible' }); // ждем видимость
       await this.dropdownLogout.click();
       // для обхода detached from DOM принудительная очистка сессии - ui работает нестабильно
-      // await this.page.waitForURL('**/#/');
-      await this.page.context().clearCookies();
+      /*await this.page.context().clearCookies();
       await this.page.evaluate(() => {
         localStorage.clear();
         sessionStorage.clear();
       });
       // Принудительная перезагрузка для перерисовки шапки
       await this.page.goto('/');
-      await this.page.waitForLoadState('networkidle');
+      await this.page.waitForLoadState('networkidle'); */
+      await this.signupButton.waitFor({ state: 'visible' });
     });
   }
 
@@ -56,5 +57,16 @@ export class MainPage {
     return test.step('Переход на главную страницу', async () => {
       await this.page.goto('/');
     });
+  }
+  async getArticlesWithTags() {
+    return test.step('Получение популярного тэга и переход по нему', async () => {
+      const tagName = await this.popularTag.textContent();
+      await this.popularTag.click();
+      return tagName;
+    });
+  }
+  getArticleTagList() {
+    // возвращаем все тэги в статьях
+    return this.articleTags;
   }
 }

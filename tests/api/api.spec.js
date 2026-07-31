@@ -2,6 +2,7 @@ import { test } from '../../src/helpers/fixtures/fixture';
 import { expect } from '@playwright/test';
 import { TodoBuilder } from '../../src/helpers/builders';
 
+const DEFAULT_TODOS_COUNT = 10;
 test.describe('API Tests', () => {
   let token;
 
@@ -33,7 +34,7 @@ test.describe('API Tests', () => {
     const { body, status } = await api.todos.getAllTodos(token);
 
     expect(status).toBe(200);
-    expect(body.todos.length).toBe(10);
+    expect(body.todos.length).toBe(DEFAULT_TODOS_COUNT);
   });
   // тест 4 получаем задачу todo по id GET /todos/{id}
   test('GET /todos/{id} (200) - получение задачи по id @GET', async ({ api }) => {
@@ -45,6 +46,8 @@ test.describe('API Tests', () => {
     const todoId = body.todos[0].id;
     expect(todoId).toBe(localTodoId);
     expect(body.todos[0].title).toBe(todo.title);
+    expect(body.todos[0].description).toBe(todo.description);
+    expect(body.todos[0].doneStatus).toBe(todo.doneStatus);
   });
 
   // тест 5 - фильтруем задачи по статусу true
@@ -59,6 +62,7 @@ test.describe('API Tests', () => {
     // expect(doneStatus).toBe(true);
     expect(body.todos.every((t) => t.doneStatus === true)).toBe(true);
     expect(body.todos.map((t) => t.title)).toContain(doneTodo.title);
+    expect(body.todos.map((t) => t.description)).toContain(doneTodo.description);
   });
 
   // тест 6 обновить заголовок задачи по id POST /todos/{id} (200)

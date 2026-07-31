@@ -14,7 +14,7 @@
     "t:debug": "npx playwright test --debug",
     "t:ui": "npx playwright test --ui",
     "allureO": "npx allure open",
-    "allureG": "npx allure generate"
+    "allureG": "npx allure generate allure-results"
   },
   "keywords": [],
   "author": "",

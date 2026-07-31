@@ -19,6 +19,9 @@ export default defineConfig({
   use: {
     screenshot: 'only-on-failure',
     trace: 'on-first-retry',
+    // явные таймауты для стабильности на медленном стенде
+    navigationTimeout: 60_000,
+    actionTimeout: 15_000,
   },
 
   // UI и API

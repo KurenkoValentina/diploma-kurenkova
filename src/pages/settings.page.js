@@ -12,7 +12,7 @@ export class SettingsPage {
   // Бизнес-сценарии на страничке
   // Изменение имени пользователя
   async updateName(username) {
-    return test.step('Изменение пароля пользователя', async () => {
+    return test.step('Изменение имени пользователя', async () => {
       await this.nameInput.click();
       await this.nameInput.fill(username);
       await this.settingsButton.click();
