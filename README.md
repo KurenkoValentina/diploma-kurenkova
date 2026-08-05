@@ -57,8 +57,6 @@ diploma-kurenkova/
 ├── .github/
 │   └── workflows/
 │       └── main.yml                  # Конфигурация CI/CD (включая динамическую генерацию config.json для Telegram-уведомлений)
-├── notifications
-│
 ├── src/
 │   ├── helpers/
 │   │   ├── builders/                 # Builder Pattern (UserBuilder, ArticleBuilder и т.д.)
@@ -69,7 +67,10 @@ diploma-kurenkova/
 │   ├── api/
 │   │   └── api.spec.js               # API-тесты
 │   └── ui/
-│       └── ui.spec.js                # UI-тесты
+│       ├── article.spec.js           # UI-тесты: статьи
+│       ├── tags.spec.js              # UI-тесты: теги
+│       ├── user.spec.js              # UI-тесты: позитивные сценарии пользователя
+│       └── user_negative.spec.js     # UI-тесты: негативные сценарии пользователя
 ├── .gitignore                        # Игнорируемые файлы Git
 ├── Dockerfile                        # Образ Docker для запуска тестов в изолированном окружении
 ├── package.json                      # Зависимости и npm-скрипты
